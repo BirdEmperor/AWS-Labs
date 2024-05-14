@@ -20,6 +20,12 @@ module "table_courses" {
   name    = "courses"
 }
 
+module "lambda" {
+  source  = "./modules/lambda"
+  context = module.label.context
+  table_authors_name = module.table_authors.id
+}
+
 resource "aws_s3_bucket" "this" {
   bucket = module.label_s3.id
   tags   = module.label_s3.tags
