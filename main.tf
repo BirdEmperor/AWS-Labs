@@ -24,6 +24,21 @@ module "lambda" {
   source  = "./modules/lambda"
   context = module.label.context
   table_authors_name = module.table_authors.id
+  table_authors_arn = module.table_authors.arn
+  table_courses_name = module.table_courses.id
+  table_courses_arn = module.table_courses.arn
+}
+
+module "iam" {
+  source  = "./modules/iam"
+  context = module.label.context
+  table_authors_arn = module.table_authors.arn
+  cloudwatch_log_group_get_all_authors_arn = module.cloudwatch.cloudwatch_log_group_get_all_authors_arn
+}
+
+module "cloudwatch" {
+  source  = "./modules/cloudwatch"
+  context = module.label.context
 }
 
 resource "aws_s3_bucket" "this" {
