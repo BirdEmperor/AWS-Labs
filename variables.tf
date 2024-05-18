@@ -5,4 +5,12 @@ variable "bucket_name" {
 
 variable "use_local" {
     type = bool
-}   
+} 
+
+variable "slack_webhook_url" {
+  type = string
+}
+
+variable "slack_email" {
+  type = string
+}
