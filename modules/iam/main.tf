@@ -97,12 +97,12 @@ resource "aws_iam_role" "delete_course" {
 
 resource "aws_iam_role_policy_attachment" "get_all_authors" {
   role       = aws_iam_role.get_all_authors.name
-  policy_arn = module.iam_policy.arn
+  policy_arn = module.iam_policy_get_all_authors.arn
 }
 
 resource "aws_iam_role_policy_attachment" "get_all_courses" {
   role       = aws_iam_role.get_all_courses.name
-  policy_arn = module.iam_policy_courses.arn
+  policy_arn = module.iam_policy_get_all_courses.arn
 }
 
 resource "aws_iam_role_policy_attachment" "update_course" {

@@ -74,7 +74,7 @@ resource "aws_api_gateway_integration" "courses_get_integration" {
   http_method             = aws_api_gateway_method.courses_get.http_method
   integration_http_method = "POST"
   type                    = "AWS"
-  uri                     = module.lambdas.lambda_courses_invoke_arn
+  uri                     = module.lambda.lambda_courses_invoke_arn
   request_parameters      = {"integration.request.header.X-Authorization" = "'static'"}
   request_templates       = {
     "application/xml" = <<EOF
@@ -190,7 +190,7 @@ resource "aws_api_gateway_integration" "courses_post_integration" {
   http_method             = aws_api_gateway_method.courses_post.http_method
   integration_http_method = "POST"
   type                    = "AWS"
-  uri                     = module.lambdas.lambda_save_course_invoke_arn
+  uri                     = module.lambda.lambda_save_course_invoke_arn
   request_parameters      = {"integration.request.header.X-Authorization" = "'static'"}
   request_templates       = {
     "application/xml" = <<EOF
@@ -248,7 +248,7 @@ resource "aws_api_gateway_integration" "courses_id_get_integration" {
   http_method             = aws_api_gateway_method.courses_id_get.http_method
   integration_http_method = "POST"
   type                    = "AWS"
-  uri                     = module.lambdas.lambda_get_course_invoke_arn
+  uri                     = module.lambda.lambda_get_course_invoke_arn
   request_parameters      = {"integration.request.header.X-Authorization" = "'static'"}
   request_templates       = {
     "application/json" = <<EOF
@@ -319,7 +319,7 @@ resource "aws_api_gateway_integration" "courses_put_integration" {
   http_method             = aws_api_gateway_method.courses_put.http_method
   integration_http_method = "POST"
   type                    = "AWS"
-  uri                     = module.lambdas.lambda_update_course_invoke_arn
+  uri                     = module.lambda.lambda_update_course_invoke_arn
   request_parameters      = {"integration.request.header.X-Authorization" = "'static'"}
   request_templates       = {
     "application/json" = <<EOF
@@ -436,7 +436,7 @@ resource "aws_api_gateway_integration" "courses_delete_integration" {
   http_method             = aws_api_gateway_method.courses_delete.http_method
   integration_http_method = "POST"
   type                    = "AWS"
-  uri                     = module.lambdas.lambda_delete_course_invoke_arn
+  uri                     = module.lambda.lambda_delete_course_invoke_arn
   request_parameters      = {"integration.request.header.X-Authorization" = "'static'"}
   request_templates       = {
     "application/json" = <<EOF
@@ -493,7 +493,7 @@ resource "aws_api_gateway_integration" "get_authors" {
   http_method             = aws_api_gateway_method.get_authors.http_method
   integration_http_method = "POST"
   type                    = "AWS"
-  uri                     = module.lambdas.lambda_authors_invoke_arn
+  uri                     = module.lambda.lambda_authors_invoke_arn
   request_parameters      = {"integration.request.header.X-Authorization" = "'static'"}
   request_templates       = {
     "application/xml" = <<EOF
