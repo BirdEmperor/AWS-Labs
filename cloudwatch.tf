@@ -3,7 +3,7 @@ module "metric_alarm" {
   version = "5.3.1"
 
   alarm_name          = "${module.label.id}-"
-  alarm_description   = "Errors in ${module.lambdas.lambda_authors_lambda_function_name}"
+  alarm_description   = "Errors in ${module.lambda.lambda_authors_lambda_function_name}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 1
   threshold           = 1
@@ -17,10 +17,10 @@ module "metric_alarm" {
 
   dimensions = {
     "authors" = {
-      FunctionName = "${module.lambdas.lambda_authors_lambda_function_name}"
+      FunctionName = "${module.lambda.lambda_authors_lambda_function_name}"
     },
     "courses" = {
-      FunctionName = "${module.lambdas.lambda_courses_lambda_function_name}"
+      FunctionName = "${module.lambda.lambda_courses_lambda_function_name}"
     },
   }
 
