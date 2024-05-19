@@ -51,7 +51,7 @@ module "label_delete_course" {
 }
 
 resource "aws_cloudwatch_log_group" "get_all_authors" {
-  name = "aws/lambda/${module.label_get_all_authors.id}"
+  name = module.label_get_all_authors.id
   tags = module.label_get_all_authors.tags
   retention_in_days = 90
 }
