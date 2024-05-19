@@ -61,6 +61,7 @@ module "lambda_function_get_all_authors" {
     TABLE_NAME = var.table_authors_name
   }
 
+  # source_path   = "modules/lambda/src/get_all_authors"
   source_path   = "${path.module}/src/get_all_authors"
 
   lambda_role = var.role_get_all_authors_arn

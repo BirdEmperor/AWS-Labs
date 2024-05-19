@@ -57,31 +57,31 @@ resource "aws_cloudwatch_log_group" "get_all_authors" {
 }
 
 resource "aws_cloudwatch_log_group" "get_all_courses" {
-  name = "aws/lambda/${module.label_get_all_courses.id}"
+  name = module.label_get_all_courses.id
   tags = module.label_get_all_courses.tags
   retention_in_days = 90
 }
 
 resource "aws_cloudwatch_log_group" "update_course" {
-  name = "aws/lambda/${module.label_update_course.id}"
+  name = module.label_update_course.id
   tags = module.label_update_course.tags
   retention_in_days = 90
 }
 
 resource "aws_cloudwatch_log_group" "save_course" {
-  name = "aws/lambda/${module.label_save_course.id}"
+  name = module.label_save_course.id
   tags = module.label_save_course.tags
   retention_in_days = 90
 }
 
 resource "aws_cloudwatch_log_group" "get_course" {
-  name = "aws/lambda/${module.label_get_course.id}"
+  name = module.label_get_course.id
   tags = module.label_get_course.tags
   retention_in_days = 90
 }
 
 resource "aws_cloudwatch_log_group" "delete_course" {
-  name = "aws/lambda/${module.label_delete_course.id}"
+  name = module.label_delete_course.id
   tags = module.label_delete_course.tags
   retention_in_days = 90
 }
