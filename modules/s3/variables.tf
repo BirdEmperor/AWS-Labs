@@ -5,4 +5,5 @@ variable "bucket_name" {
 
 variable "use_local" {
     type = bool
-}   
+}  
+ 
