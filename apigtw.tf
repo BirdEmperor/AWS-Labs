@@ -1,24 +1,24 @@
 resource "aws_api_gateway_rest_api" "this" {
-    body = jsonencode({
-  "openapi": "3.0.1",
-  "info": {
-    "title": "example",
-    "version": "1.0"
-  },
-  "paths": {
-    "/path1": {
-      "get": {
-        "x-amazon-apigateway-integration": {
-          "httpMethod": "GET",
-          "payloadFormatVersion": "1.0",
-          "type": "HTTP_PROXY",
-          "uri": "https://ip-ranges.amazonaws.com/ip-ranges.json"
-        }
-      }
-    }
-  }
-}
-)
+  # body = jsonencode({
+  # "openapi": "3.0.1",
+  # "info": {
+  #   "title": "example",
+  #   "version": "1.0"
+  # },
+  # "paths": {
+  #   "/path1": {
+  #     "get": {
+  #       "x-amazon-apigateway-integration": {
+  #         "httpMethod": "GET",
+  #         "payloadFormatVersion": "1.0",
+  #         "type": "HTTP_PROXY",
+  #         "uri": "https://ip-ranges.amazonaws.com/ip-ranges.json"
+  #       }
+  #     }
+  #   }
+  # }
+  # }
+  # )
 
   name = module.label_api.id
   description = "API Gateway"
@@ -86,30 +86,31 @@ resource "aws_api_gateway_integration" "courses_get_integration" {
   }
   content_handling = "CONVERT_TO_TEXT"
 }
-resource "aws_api_gateway_integration_response" "courses_get_integration_response" {
-  rest_api_id = aws_api_gateway_rest_api.this.id
-  resource_id = aws_api_gateway_resource.courses.id
-  http_method = aws_api_gateway_method.courses_get.http_method
-  status_code = aws_api_gateway_method_response.courses_get_response_200.status_code
 
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-    "method.response.header.Access-Control-Allow-Methods" = "'*'",
-    "method.response.header.Access-Control-Allow-Origin" = "'*'"
-  }
-}
-resource "aws_api_gateway_method_response" "courses_get_response_200" {
-  rest_api_id     = aws_api_gateway_rest_api.this.id
-  resource_id     = aws_api_gateway_resource.courses.id
-  http_method     = aws_api_gateway_method.courses_get.http_method
-  status_code     = "200"
-  response_models = { "application/json" = "Empty" }
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = true,
-    "method.response.header.Access-Control-Allow-Methods" = true,
-    "method.response.header.Access-Control-Allow-Origin" = true
-  }
-}
+# resource "aws_api_gateway_integration_response" "courses_get_integration_response" {
+#   rest_api_id = aws_api_gateway_rest_api.this.id
+#   resource_id = aws_api_gateway_resource.courses.id
+#   http_method = aws_api_gateway_method.courses_get.http_method
+#   status_code = aws_api_gateway_method_response.courses_get_response_200.status_code
+
+#   response_parameters = {
+#     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+#     "method.response.header.Access-Control-Allow-Methods" = "'*'",
+#     "method.response.header.Access-Control-Allow-Origin" = "'*'"
+#   }
+# }
+# resource "aws_api_gateway_method_response" "courses_get_response_200" {
+#   rest_api_id     = aws_api_gateway_rest_api.this.id
+#   resource_id     = aws_api_gateway_resource.courses.id
+#   http_method     = aws_api_gateway_method.courses_get.http_method
+#   status_code     = "200"
+#   response_models = { "application/json" = "Empty" }
+#   response_parameters = {
+#     "method.response.header.Access-Control-Allow-Headers" = true,
+#     "method.response.header.Access-Control-Allow-Methods" = true,
+#     "method.response.header.Access-Control-Allow-Origin" = true
+#   }
+# }
 ###########################################
 
 
@@ -131,6 +132,7 @@ resource "aws_api_gateway_integration" "courses_integration" {
 PARAMS
   }
 }
+
 resource "aws_api_gateway_integration_response" "courses_integration_response" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   resource_id = aws_api_gateway_resource.courses.id
@@ -202,6 +204,7 @@ resource "aws_api_gateway_integration" "courses_post_integration" {
   }
   content_handling = "CONVERT_TO_TEXT"
 }
+
 resource "aws_api_gateway_integration_response" "courses_post_integration_response" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   resource_id = aws_api_gateway_resource.courses.id
